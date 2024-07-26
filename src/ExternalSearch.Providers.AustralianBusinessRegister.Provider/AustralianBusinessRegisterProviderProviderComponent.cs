@@ -4,12 +4,12 @@ using CluedIn.Core;
 using CluedIn.Core.Providers;
 using CluedIn.Core.Server;
 using ComponentHost;
-using Constants = CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry.Constants;
+using Constants = CluedIn.ExternalSearch.Providers.AustralianBusinessRegister.Constants;
 
-namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
+namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegister
 {
     [Component(Constants.ComponentName, "Providers", ComponentType.Service, ServerComponents.ProviderWebApi, Components.Server, Components.DataStores, Isolation = ComponentIsolation.NotIsolated)]
-    public sealed class AustralianBusinessRegistryProviderProviderComponent : ServiceApplicationComponent<IServer>
+    public sealed class AustralianBusinessRegisterProviderProviderComponent : ServiceApplicationComponent<IServer>
     {
         /**********************************************************************************************************
          * CONSTRUCTOR
@@ -19,11 +19,11 @@ namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
         /// Initializes a new instance of the <see cref="GoogleMapsProviderProviderComponent" /> class.
         /// </summary>
         /// <param name="componentInfo">The component information.</param>
-        public AustralianBusinessRegistryProviderProviderComponent(ComponentInfo componentInfo) : base(componentInfo)
+        public AustralianBusinessRegisterProviderProviderComponent(ComponentInfo componentInfo) : base(componentInfo)
         {
             // Dev. Note: Potential for compiler warning here ... CA2214: Do not call overridable methods in constructors
             //   this class has been sealed to prevent the CA2214 waring being raised by the compiler
-            Container.Register(Component.For<AustralianBusinessRegistryProviderProviderComponent>().Instance(this));
+            Container.Register(Component.For<AustralianBusinessRegisterProviderProviderComponent>().Instance(this));
         }
 
         /**********************************************************************************************************
@@ -33,7 +33,7 @@ namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            var asm = Assembly.GetAssembly(typeof(AustralianBusinessRegistryProviderProviderComponent));
+            var asm = Assembly.GetAssembly(typeof(AustralianBusinessRegisterProviderProviderComponent));
             Container.Register(Types.FromAssembly(asm).BasedOn<IProvider>().WithServiceFromInterface().If(t => !t.IsAbstract).LifestyleSingleton());
 
             State = ServiceState.Started;

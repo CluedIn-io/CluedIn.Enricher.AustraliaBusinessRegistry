@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExternalSearch.Providers.AustralianBusinessRegistry\ExternalSearch.Providers.AustralianBusinessRegistry.csproj" />
+    <ProjectReference Include="..\ExternalSearch.Providers.AustralianBusinessRegister\ExternalSearch.Providers.AustralianBusinessRegister.csproj" />
   </ItemGroup>
 
 </Project>

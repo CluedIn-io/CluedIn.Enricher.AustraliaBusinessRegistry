@@ -4,6 +4,6 @@
     <PackageReference Include="CluedIn.Testing.Base" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\ExternalSearch.Providers.AustralianBusinessRegistry\ExternalSearch.Providers.AustralianBusinessRegistry.csproj" />
+    <ProjectReference Include="..\..\..\src\ExternalSearch.Providers.AustralianBusinessRegister\ExternalSearch.Providers.AustralianBusinessRegister.csproj" />
   </ItemGroup>
 </Project>
