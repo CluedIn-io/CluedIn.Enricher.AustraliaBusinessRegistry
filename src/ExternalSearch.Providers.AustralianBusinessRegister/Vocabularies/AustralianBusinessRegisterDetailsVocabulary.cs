@@ -1,18 +1,18 @@
 ﻿using CluedIn.Core.Data;
 using CluedIn.Core.Data.Vocabularies;
 
-namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry.Vocabularies
+namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegister.Vocabularies
 {
-    public class AustralianBusinessRegistryDetailsVocabulary : SimpleVocabulary
+    public class AustralianBusinessRegisterDetailsVocabulary : SimpleVocabulary
     {
-        public AustralianBusinessRegistryDetailsVocabulary()
+        public AustralianBusinessRegisterDetailsVocabulary()
         {
-            this.VocabularyName = "Australian Business Registry Details";
-            this.KeyPrefix = "australianBusinessRegistry.Company";
+            this.VocabularyName = "Australian Business Register Details";
+            this.KeyPrefix = "australianBusinessRegister.Company";
             this.KeySeparator = ".";
             this.Grouping = EntityType.Organization;
 
-            this.AddGroup("AustralianBusinessRegistry Image Details", group =>
+            this.AddGroup("AustralianBusinessRegister Image Details", group =>
             {
                 this.MainName = group.Add(new VocabularyKey("mainName", VocabularyKeyDataType.Text));
                 this.RecordLastUpdated = group.Add(new VocabularyKey("recordLastUpdated", VocabularyKeyDataType.Text));

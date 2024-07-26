@@ -12,16 +12,16 @@ using CluedIn.Core.Data.Relational;
 using CluedIn.Core.Providers;
 using EntityType = CluedIn.Core.Data.EntityType;
 using CluedIn.Core.Data.Vocabularies;
-using CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry.Models;
+using CluedIn.ExternalSearch.Providers.AustralianBusinessRegister.Models;
 using RestSharp.Deserializers;
-using CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry.Vocabularies;
+using CluedIn.ExternalSearch.Providers.AustralianBusinessRegister.Vocabularies;
 using CluedIn.Crawling.Helpers;
 
-namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
+namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegister
 {
     /// <summary>The googlemaps graph external search provider.</summary>
     /// <seealso cref="CluedIn.ExternalSearch.ExternalSearchProviderBase" />
-    public class AustralianBusinessRegistryExternalSearchProvider : ExternalSearchProviderBase, IExtendedEnricherMetadata, IConfigurableExternalSearchProvider
+    public class AustralianBusinessRegisterExternalSearchProvider : ExternalSearchProviderBase, IExtendedEnricherMetadata, IConfigurableExternalSearchProvider
     {
         private static EntityType[] AcceptedEntityTypes = { EntityType.Organization };
 
@@ -29,10 +29,10 @@ namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
          * CONSTRUCTORS
          **********************************************************************************************************/
 
-        public AustralianBusinessRegistryExternalSearchProvider()
+        public AustralianBusinessRegisterExternalSearchProvider()
             : base(Constants.ProviderId, AcceptedEntityTypes)
         {
-            var nameBasedTokenProvider = new NameBasedTokenProvider("AustralianBusinessRegistry");
+            var nameBasedTokenProvider = new NameBasedTokenProvider("AustralianBusinessRegister");
 
             if (nameBasedTokenProvider.ApiToken != null)
                 this.TokenProvider = new RoundRobinTokenProvider(nameBasedTokenProvider.ApiToken.Split(',', ';'));
@@ -220,7 +220,7 @@ namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
         /// <returns>The code origin</returns>
         private CodeOrigin GetCodeOrigin()
         {
-            return CodeOrigin.CluedIn.CreateSpecific("australianBusinessRegistry");
+            return CodeOrigin.CluedIn.CreateSpecific("australianBusinessRegister");
         }
        
 
@@ -234,24 +234,24 @@ namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
             metadata.Codes.Add(code);
             metadata.Codes.Add(request.EntityMetaData.OriginEntityCode);
 
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.AddressEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().EffectiveFrom.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.AddressEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().EffectiveTo.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.AddressPostCode] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().Postcode.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.AddressStateCode] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().StateCode.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.BusinessName] = resultItem.Data.Response.BusinessEntity202001.BusinessName.OrganisationName.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.ASICNumber] = resultItem.Data.Response.BusinessEntity202001.ASICNumber.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.BusinessNameEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.BusinessName.EffectiveFrom.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.EntityDescription] = resultItem.Data.Response.BusinessEntity202001.EntityType.EntityDescription.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.EntityStatusCode] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EntityStatusCode.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.EntityStatusEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EffectiveFrom.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.EntityStatusEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EffectiveTo.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.EntityTypeCode] = resultItem.Data.Response.BusinessEntity202001.EntityType.EntityTypeCode.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.GoodsAndServicesTaxEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.GoodsAndServicesTax.EffectiveFrom.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.GoodsAndServicesTaxEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.GoodsAndServicesTax.EffectiveTo.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.IsCurrentIdicator] = resultItem.Data.Response.BusinessEntity202001.ABN.IsCurrentIndicator.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.MainName] = resultItem.Data.Response.BusinessEntity202001.MainName.OrganisationName.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.MainNameEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.MainName.EffectiveFrom.PrintIfAvailable();
-            metadata.Properties[AustralianBusinessRegistryVocabulary.Organization.RecordLastUpdated] = resultItem.Data.Response.BusinessEntity202001.RecordLastUpdatedDate.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.AddressEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().EffectiveFrom.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.AddressEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().EffectiveTo.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.AddressPostCode] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().Postcode.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.AddressStateCode] = resultItem.Data.Response.BusinessEntity202001.MainBusinessPhysicalAddress.First().StateCode.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.BusinessName] = resultItem.Data.Response.BusinessEntity202001.BusinessName.OrganisationName.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.ASICNumber] = resultItem.Data.Response.BusinessEntity202001.ASICNumber.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.BusinessNameEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.BusinessName.EffectiveFrom.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.EntityDescription] = resultItem.Data.Response.BusinessEntity202001.EntityType.EntityDescription.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.EntityStatusCode] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EntityStatusCode.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.EntityStatusEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EffectiveFrom.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.EntityStatusEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.EntityStatus.EffectiveTo.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.EntityTypeCode] = resultItem.Data.Response.BusinessEntity202001.EntityType.EntityTypeCode.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.GoodsAndServicesTaxEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.GoodsAndServicesTax.EffectiveFrom.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.GoodsAndServicesTaxEffectiveTo] = resultItem.Data.Response.BusinessEntity202001.GoodsAndServicesTax.EffectiveTo.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.IsCurrentIdicator] = resultItem.Data.Response.BusinessEntity202001.ABN.IsCurrentIndicator.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.MainName] = resultItem.Data.Response.BusinessEntity202001.MainName.OrganisationName.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.MainNameEffectiveFrom] = resultItem.Data.Response.BusinessEntity202001.MainName.EffectiveFrom.PrintIfAvailable();
+            metadata.Properties[AustralianBusinessRegisterVocabulary.Organization.RecordLastUpdated] = resultItem.Data.Response.BusinessEntity202001.RecordLastUpdatedDate.PrintIfAvailable();
 
         }
 
@@ -273,7 +273,7 @@ namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
 
         public IEnumerable<IExternalSearchQueryResult> ExecuteSearch(ExecutionContext context, IExternalSearchQuery query, IDictionary<string, object> config, IProvider provider)
         {
-            var jobData = new AustralianBusinessRegistryExternalSearchJobData(config);
+            var jobData = new AustralianBusinessRegisterExternalSearchJobData(config);
 
             foreach (var externalSearchQueryResult in InternalExecuteSearch(query, jobData.ApiToken)) yield return externalSearchQueryResult;
         }

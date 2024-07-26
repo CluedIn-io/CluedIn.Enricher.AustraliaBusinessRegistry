@@ -2,7 +2,7 @@
 using CluedIn.Core.Data;
 using CluedIn.Core.Data.Parts;
 using CluedIn.Core.Messages.Processing;
-using CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry;
+using CluedIn.ExternalSearch.Providers.AustralianBusinessRegister;
 using CluedIn.Testing.Base.ExternalSearch;
 using Moq;
 using Xunit;
@@ -10,13 +10,13 @@ using Xunit.Abstractions;
 
 //using TestContext = CluedIn.Tests.Unit.TestContext;
 
-namespace CluedIn.ExternalSearch.AustralianBusinessRegistry.Integration.Tests
+namespace CluedIn.ExternalSearch.AustralianBusinessRegister.Integration.Tests
 {
-    public class AustralianBusinessRegistryTests : BaseExternalSearchTest<AustralianBusinessRegistryExternalSearchProvider>
+    public class AustralianBusinessRegisterTests : BaseExternalSearchTest<AustralianBusinessRegisterExternalSearchProvider>
     {
         private readonly ITestOutputHelper outputHelper;
 
-        public AustralianBusinessRegistryTests(ITestOutputHelper outputHelper)
+        public AustralianBusinessRegisterTests(ITestOutputHelper outputHelper)
         {
             this.outputHelper = outputHelper;
         }

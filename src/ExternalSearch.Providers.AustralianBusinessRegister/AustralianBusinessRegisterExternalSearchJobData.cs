@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using CluedIn.Core.Crawling;
 
-namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
+namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegister
 {
-    public class AustralianBusinessRegistryExternalSearchJobData : CrawlJobData
+    public class AustralianBusinessRegisterExternalSearchJobData : CrawlJobData
     {
-        public AustralianBusinessRegistryExternalSearchJobData(IDictionary<string, object> configuration)
+        public AustralianBusinessRegisterExternalSearchJobData(IDictionary<string, object> configuration)
         {
             ApiToken = GetValue<string>(configuration, Constants.KeyName.ApiToken);
             AcceptedEntityType = GetValue<string>(configuration, Constants.KeyName.AcceptedEntityType);

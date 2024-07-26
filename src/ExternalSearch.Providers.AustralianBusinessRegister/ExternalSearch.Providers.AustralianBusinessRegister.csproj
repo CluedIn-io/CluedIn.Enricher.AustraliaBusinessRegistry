@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Resources\abr.png" />
+      <None Remove="Resources\logo.svg" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="CluedIn.ExternalSearch" />
@@ -16,8 +16,6 @@
         <PackageReference Include="CluedIn.Core" />
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Include="Resources\abr.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\logo.svg" />
     </ItemGroup>
 </Project>

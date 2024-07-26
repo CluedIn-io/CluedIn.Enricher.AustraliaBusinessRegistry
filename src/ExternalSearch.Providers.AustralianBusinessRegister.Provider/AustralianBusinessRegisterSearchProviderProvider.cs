@@ -9,17 +9,17 @@ using CluedIn.Core.ExternalSearch;
 using CluedIn.Core.Providers;
 using CluedIn.Core.Webhooks;
 using CluedIn.ExternalSearch;
-using CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry;
+using CluedIn.ExternalSearch.Providers.AustralianBusinessRegister;
 using CluedIn.Providers.Models;
-using Constants = CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry.Constants;
+using Constants = CluedIn.ExternalSearch.Providers.AustralianBusinessRegister.Constants;
 
-namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
+namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegister
 {
-    public class AustralianBusinessRegistrySearchProviderProvider : ProviderBase, IExtendedProviderMetadata, IExternalSearchProviderProvider
+    public class AustralianBusinessRegisterSearchProviderProvider : ProviderBase, IExtendedProviderMetadata, IExternalSearchProviderProvider
     {
         public IExternalSearchProvider ExternalSearchProvider { get; }
 
-        public AustralianBusinessRegistrySearchProviderProvider([System.Diagnostics.CodeAnalysis.NotNull] ApplicationContext appContext) : base(appContext, GetMetaData())
+        public AustralianBusinessRegisterSearchProviderProvider([System.Diagnostics.CodeAnalysis.NotNull] ApplicationContext appContext) : base(appContext, GetMetaData())
         {
             ExternalSearchProvider = appContext.Container.ResolveAll<IExternalSearchProvider>().Single(n => n.Id == Constants.ProviderId);
         }
@@ -44,7 +44,7 @@ namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
             if (configuration == null)
                 throw new ArgumentNullException(nameof(configuration));
 
-            var result = new AustralianBusinessRegistryExternalSearchJobData(configuration);
+            var result = new AustralianBusinessRegisterExternalSearchJobData(configuration);
 
             return await Task.FromResult(result);
         }
@@ -62,12 +62,12 @@ namespace CluedIn.Provider.ExternalSearch.AustralianBusinessRegistry
 
         public override async Task<IDictionary<string, object>> GetHelperConfiguration(ProviderUpdateContext context, CrawlJobData jobData, Guid organizationId, Guid userId, Guid providerDefinitionId)
         {
-            if (jobData is AustralianBusinessRegistryExternalSearchJobData result)
+            if (jobData is AustralianBusinessRegisterExternalSearchJobData result)
             {
                 return await Task.FromResult(result.ToDictionary());
             }
 
-            throw new InvalidOperationException($"Unexpected data type for {nameof(AustralianBusinessRegistryExternalSearchJobData)}, {jobData.GetType()}");
+            throw new InvalidOperationException($"Unexpected data type for {nameof(AustralianBusinessRegisterExternalSearchJobData)}, {jobData.GetType()}");
         }
 
         public override Task<IDictionary<string, object>> GetHelperConfiguration(ProviderUpdateContext context, CrawlJobData jobData, Guid organizationId, Guid userId, Guid providerDefinitionId, string folderId)

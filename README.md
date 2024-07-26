@@ -1,6 +1,6 @@
-# CluedIn.Enricher.AustralianBusinessRegistry
+# CluedIn.Enricher.AustralianBusinessRegister
 
-CluedIn External Search for AustralianBusinessRegistry Enricher.
+CluedIn External Search for AustralianBusinessRegister Enricher.
 
 ------
 
@@ -12,7 +12,7 @@ This repository contains the code and associated tests for enriching with images
 
 ### NuGet Packages
 
-To use the `AustralianBusinessRegistry` External Search with the `CluedIn` server you will have to add the CluedIn.Enricher.AustralianBusinessRegistry nuget package to your environment.
+To use the `AustralianBusinessRegister` External Search with the `CluedIn` server you will have to add the CluedIn.Enricher.AustralianBusinessRegister nuget package to your environment.
 
 ### Running Tests
 

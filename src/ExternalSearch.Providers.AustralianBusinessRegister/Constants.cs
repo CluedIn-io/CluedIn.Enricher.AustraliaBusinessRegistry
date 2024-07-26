@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using CluedIn.Core.Data.Relational;
 using CluedIn.Core.Providers;
 
-namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
+namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegister
 {
     public static class Constants
     {
-        public const string ComponentName = "AustralianBusinessRegistry";
-        public const string ProviderName = "Australian Business Registry";
+        public const string ComponentName = "AustralianBusinessRegister";
+        public const string ProviderName = "Australian Business Register";
         public static readonly Guid ProviderId = Guid.Parse("59d2a815-d947-4e1b-b04c-6b0d89bf565a");
 
         public struct KeyName
@@ -19,8 +19,8 @@ namespace CluedIn.ExternalSearch.Providers.AustralianBusinessRegistry
 
         }
 
-        public static string About { get; set; } = "Australian Business Registry is the official business registry of Australia";
-        public static string Icon { get; set; } = "Resources.abr.png";
+        public static string About { get; set; } = "Australian Business Register is the official business Register of Australia";
+        public static string Icon { get; set; } = "Resources.logo.svg";
         public static string Domain { get; set; } = "N/A";
 
         public static AuthMethods AuthMethods { get; set; } = new AuthMethods
