@@ -3,7 +3,7 @@ parameters:
   - name: runIntegrationTests
     displayName: Run Integration Tests
     type: boolean
-    default: true
+    default: false
     
   - name: pipelineTemplateRef
     displayName: Pipeline Template Ref
@@ -60,5 +60,9 @@ steps:
       githubReleaseInMaster: true
       publicReleaseForMaster: true
       executeIntegrationTests: ${{ parameters.runIntegrationTests }}
+      createIntegrationEnvironmentScriptFilePath: './build/integration-test.ps1'
+      createIntegrationEnvironmentScriptArguments: '-Action SetUp'
+      deleteIntegrationEnvironmentScriptFilePath: './build/integration-test.ps1'
+      deleteIntegrationEnvironmentScriptArguments: '-Action TearDown'
       publishCodeCoverage: true
       useGitVersionDotNetTool: true
