@@ -1,4 +1,14 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
+parameters:
+  - name: runIntegrationTests
+    displayName: Run Integration Tests
+    type: boolean
+    default: false
+    
+  - name: pipelineTemplateRef
+    displayName: Pipeline Template Ref
+    type: string
+    default: refs/heads/refactor
 
 trigger:
   branches:
@@ -20,7 +30,7 @@ resources:
       type: github
       name: CluedIn-io/AzurePipelines.Templates
       endpoint: 'CluedIn-io'
-      ref: refs/heads/refactor
+      ref: ${{ parameters.pipelineTemplateRef }}
 
 pool:
   vmImage: 'windows-latest'
@@ -37,8 +47,22 @@ variables:
     value: Release
 
 steps:
+  - task: UseDotNet@2
+    displayName: Install .NET SDK 6.0
+    inputs:
+      version: 6.0.x
 
-- task: NuGetAuthenticate@0
-  displayName: 'Authenticate with nuget'
+  - task: NuGetAuthenticate@0
+    displayName: 'Authenticate with nuget'
 
-- template: crawler.build.yml@templates
+  - template: crawler.build.yml@templates
+    parameters:
+      githubReleaseInMaster: true
+      publicReleaseForMaster: true
+      executeIntegrationTests: ${{ parameters.runIntegrationTests }}
+      createIntegrationEnvironmentScriptFilePath: './build/integration-test.ps1'
+      createIntegrationEnvironmentScriptArguments: '-Action SetUp'
+      deleteIntegrationEnvironmentScriptFilePath: './build/integration-test.ps1'
+      deleteIntegrationEnvironmentScriptArguments: '-Action TearDown'
+      publishCodeCoverage: true
+      useGitVersionDotNetTool: true
