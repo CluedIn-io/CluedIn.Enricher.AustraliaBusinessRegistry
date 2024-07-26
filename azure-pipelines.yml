@@ -33,9 +33,10 @@ resources:
       ref: ${{ parameters.pipelineTemplateRef }}
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
+  - group: nuget
   - name: testFolderPath
     value: '$(Build.SourcesDirectory)/test'
   - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
